@@ -3,80 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🚀 BaoVN ULTRA BP HUB</title>
+<title>BaoVN Free SFS Blueprints — ULTRA GOD</title>
 
 <style>
-/* ===== BODY ===== */
+
+/* ===== SCROLL FIX ===== */
 html,body{
   margin:0;
   padding:0;
-  font-family:Arial;
+  overflow-x:hidden;
+  overflow-y:auto;
+  touch-action:pan-y;
+  scroll-behavior:smooth;
+  font-family:Arial, Helvetica, sans-serif;
   background:#020617;
   color:white;
-  overflow-x:hidden;
 }
 
-/* ===== STAR BG ===== */
+/* ===== SAO NỀN ===== */
 .stars{
   position:fixed;
   width:100%;
   height:100%;
   background:url("https://i.imgur.com/YKY28eT.png");
-  animation:starsMove 200s linear infinite;
+  animation:starScroll 200s linear infinite;
   z-index:-3;
 }
-@keyframes starsMove{
+@keyframes starScroll{
   from{background-position:0 0;}
   to{background-position:-10000px 5000px;}
 }
 
-/* ===== METEOR ===== */
+/* ===== SAO BĂNG ===== */
 .meteor{
   position:fixed;
-  top:-50px;
-  left:80%;
   width:3px;
   height:120px;
   background:linear-gradient(white,transparent);
-  animation:meteorFall 3s linear infinite;
+  top:-100px;
+  left:50%;
+  animation:meteorFall 6s linear infinite;
   z-index:-2;
 }
 @keyframes meteorFall{
-  from{transform:translate(0,0);}
-  to{transform:translate(-600px,900px);}
+  to{transform:translate(-600px,900px);opacity:0;}
 }
 
-/* ===== SATELLITE ===== */
+/* ===== VỆ TINH ===== */
 .satellite{
   position:fixed;
-  top:120px;
-  width:80px;
-  animation:satMove 40s linear infinite;
-  z-index:-1;
+  top:20%;
+  left:-200px;
+  font-size:28px;
+  animation:satFly 40s linear infinite;
 }
-@keyframes satMove{
-  from{left:-120px;}
-  to{left:110%;}
+@keyframes satFly{
+  to{left:120%;}
 }
 
 /* ===== HEADER ===== */
 header{
   text-align:center;
-  font-size:30px;
   padding:20px;
+  font-size:28px;
   font-weight:bold;
+  background:linear-gradient(90deg,#06b6d4,#3b82f6);
+  box-shadow:0 0 25px #000;
 }
 
 /* ===== SEARCH ===== */
 .searchBox{
   text-align:center;
+  margin:20px;
 }
 .searchBox input{
-  padding:10px;
-  width:70%;
-  border-radius:20px;
+  padding:12px;
+  width:260px;
+  border-radius:12px;
   border:none;
+  outline:none;
 }
 
 /* ===== CONTAINER ===== */
@@ -91,256 +96,197 @@ header{
 
 /* ===== CARD ===== */
 .card{
-  background:#0f172a;
-  padding:20px;
+  background:#1e293b;
   border-radius:20px;
-  box-shadow:0 0 25px #00f7ff44;
+  padding:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.6);
   transition:.3s;
 }
 .card:hover{
-  transform:scale(1.02);
-  box-shadow:0 0 40px #00f7ff;
+  transform:scale(1.03);
+  box-shadow:0 0 30px #38bdf8;
+}
+
+.preview{
+  width:100%;
+  border-radius:14px;
+  margin-bottom:10px;
 }
 
 /* ===== BUTTON ===== */
-.openBtn{
-  padding:10px 20px;
+.btn{
+  padding:12px 22px;
+  background:linear-gradient(90deg,#22c55e,#4ade80);
+  border-radius:14px;
   border:none;
-  border-radius:25px;
-  background:linear-gradient(90deg,#00f7ff,#00ffa6);
   font-weight:bold;
   cursor:pointer;
 }
 
-/* ===== POPUP ===== */
-.popup{
+/* ===== CONFIRM ===== */
+#confirmBox{
   position:fixed;
-  inset:0;
-  background:#000c;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#0f172a;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 40px #38bdf8;
   display:none;
+  text-align:center;
+  z-index:999;
+}
+
+/* ===== LOADING ===== */
+#loading{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
+  z-index:1000;
 }
 
-.box{
-  background:#020617;
-  padding:25px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 30px #00f7ff;
+.fire{
+  font-size:40px;
+  animation:fire .2s infinite alternate;
+}
+@keyframes fire{
+  to{transform:translateY(-8px);}
 }
 
-.btnBox{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  margin-top:15px;
-}
-
-.premiumBtn{
-  padding:10px 26px;
-  border-radius:30px;
-  border:2px solid;
-  background:transparent;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.yesBtn{color:#00ffe0;border-color:#00ffe0;}
-.noBtn{color:#ff4d6d;border-color:#ff4d6d;}
-
-.loading{
-  display:none;
-  margin-top:10px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
 <div class="stars"></div>
-<div class="meteor"></div>
-<img class="satellite"
-src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Satellite_icon.svg">
+<div class="satellite">🛰️</div>
 
-<header>🚀 BaoVN ULTRA BP HUB</header>
+<!-- LOADING -->
+<div id="loading">
+<div class="fire">🚀🔥</div>
+<h2 id="loadText">Loading 0%</h2>
+</div>
+
+<header>🚀 BaoVN Free SFS Blueprints — ULTRA GOD</header>
 
 <!-- SEARCH -->
 <div class="searchBox">
-<input placeholder="Search BP..." onkeyup="searchBP(this.value)">
+<input type="text" placeholder="Search Blueprint..." onkeyup="searchBP(this.value)">
 </div>
 
-<!-- BP LIST -->
-<div class="container">
+<div class="container" id="bpList"></div>
 
-<div class="card">
-<h3>Rocket Components</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/8zyuZFMaEe6eJ7uAd13aUA')">
-Open BP</button>
+<!-- CONFIRM -->
+<div id="confirmBox">
+<h3>Are you sure you want to open the blueprints?</h3>
+<button onclick="closeConfirm()">No</button>
+<button onclick="confirmOpen()">Yes</button>
 </div>
 
-<div class="card">
-<h3>Soyuz Blueprint</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/CP1ahleaEe6eNLuAd13aUA')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Rocket Components 2 (No DLC)</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/zM-6lXc0Ee6edbuAd13aUA')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Space Shuttle + Cruiser</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/tcCdu11SEe6eRLuAd13aUA')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Extra Blueprint</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/mAMsVK14Ee6LZkVkBXBP0w')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Big Delta Rocket</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/TAz2FbE3Ee6LZkVkBXBP0w')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>1000x Efficient Rocket</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/VB0jkrHhEe6LZkVkBXBP0w')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Impossible Challenge</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/tZC7ONyjEe6LqEVkBXBP0w')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Falcon Heavy With Starlink</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/j1XwNRnrEe-3PuNyTkiz9w')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>Saturn V</h3>
-<button class="openBtn"
-onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/s9CLL0LFEe-ZFDmvLffn8g')">
-Open BP</button>
-</div>
-
-<div class="card">
-<h3>📂 Drive Folder</h3>
-<button class="openBtn"
-onclick="openBP('https://drive.google.com/drive/folders/1-Dfuvuehw5mk_zWQIvcKKCaHz_sgY2d2')">
-Open Folder</button>
-</div>
-
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-<div class="box">
-
-<h3>Are you sure you want to open BP?</h3>
-
-<div class="btnBox">
-<button class="premiumBtn noBtn"
-onclick="closePop()">No</button>
-
-<button class="premiumBtn yesBtn"
-onclick="startOpen()">Yes</button>
-</div>
-
-<div class="loading" id="loading">
-🚀 Opening... <span id="percent">0%</span>
-</div>
-
-</div>
-</div>
-
-<audio id="sound"
-src="https://www.soundjay.com/mechanical/rocket-launch-01.mp3"></audio>
+<!-- AUDIO -->
+<audio id="openSound" src="https://www.soundjay.com/mechanical/sounds/rocket-launch-01.mp3"></audio>
+<audio autoplay loop src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bce.mp3"></audio>
 
 <script>
-let link="";
-let loadInterval=null;
-let openTimeout=null;
 
-function openBP(l){
-  link=l;
-  popup.style.display="flex";
-  percent.innerText="0%";
-  loading.style.display="none";
+/* ===== BP DATA ===== */
+const blueprints=[
+
+{title:"Rocket Components",cat:"Pack",
+img:"https://i.imgur.com/7QZ6Q9B.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/8zyuZFMaEe6eJ7uAd13aUA"},
+
+{title:"Soyuz",cat:"Rocket",
+img:"https://i.imgur.com/6X4Q7vG.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/CP1ahleaEe6eNLuAd13aUA"},
+
+{title:"Shuttle + Cruiser",cat:"Station",
+img:"https://i.imgur.com/4R1Z7wL.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/tcCdu11SEe6eRLuAd13aUA"},
+
+{title:"Saturn V",cat:"Rocket",
+img:"https://i.imgur.com/2yaf2wb.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/s9CLL0LFEe-ZFDmvLffn8g"},
+
+{title:"Falcon Heavy Starlink",cat:"Satellite",
+img:"https://i.imgur.com/9XqQ9QF.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/j1XwNRnrEe-3PuNyTkiz9w"},
+
+{title:"18 Satellites Rocket",cat:"Satellite",
+img:"https://i.imgur.com/3k9Q9QF.png",
+link:"https://sharing.spaceflightsimulator.app/rocket/SgHYe0FDEe-ZEjmvLffn8g"},
+
+{title:"Drive Folder",cat:"Pack",
+img:"https://i.imgur.com/zYIlgBl.png",
+link:"https://drive.google.com/drive/folders/1-Dfuvuehw5mk_zWQIvcKKCaHz_sgY2d2"}
+
+];
+
+/* ===== RENDER ===== */
+function render(list){
+const box=document.getElementById("bpList");
+box.innerHTML="";
+
+list.forEach(bp=>{
+box.innerHTML+=`
+<div class="card">
+<img class="preview" src="${bp.img}">
+<h3>${bp.title}</h3>
+<p>Category: ${bp.cat}</p>
+<button class="btn" onclick="openBP('${bp.link}')">Open BP</button>
+</div>`;
+});
+}
+render(blueprints);
+
+/* ===== SEARCH ===== */
+function searchBP(txt){
+txt=txt.toLowerCase();
+render(blueprints.filter(bp=>bp.title.toLowerCase().includes(txt)));
 }
 
-function closePop(){
-  popup.style.display="none";
+/* ===== CONFIRM ===== */
+let target="";
 
-  clearInterval(loadInterval);
-  clearTimeout(openTimeout);
-
-  percent.innerText="0%";
-  loading.style.display="none";
+function openBP(link){
+target=link;
+confirmBox.style.display="block";
 }
 
-function startOpen(){
-
-  sound.currentTime=0;
-  sound.play();
-
-  loading.style.display="block";
-
-  let p=0;
-
-  loadInterval=setInterval(()=>{
-    p++;
-    percent.innerText=p+"%";
-
-    if(p>=100){
-      clearInterval(loadInterval);
-
-      openTimeout=setTimeout(()=>{
-        location.href=link;
-      },700);
-    }
-
-  },60);
+function closeConfirm(){
+target="";
+confirmBox.style.display="none";
 }
 
-/* SEARCH */
-function searchBP(v){
-  document.querySelectorAll(".card")
-  .forEach(c=>{
-    c.style.display=
-    c.innerText.toLowerCase()
-    .includes(v.toLowerCase())
-    ?"block":"none";
-  });
+function confirmOpen(){
+confirmBox.style.display="none";
+openSound.play();
+loading.style.display="flex";
+loadText.innerText="Opening...";
+
+setTimeout(()=>{
+window.open(target,"_blank");
+loading.style.display="none";
+},6500);
 }
 
-/* LOCK SCROLL NGANG */
-document.body.addEventListener("touchmove",e=>{
-  if(Math.abs(e.touches[0].clientX)>10){
-    e.preventDefault();
-  }
-},{passive:false});
+/* ===== LOADING % ===== */
+let p=0;
+let int=setInterval(()=>{
+p++;
+loadText.innerText="Loading "+p+"%";
+if(p>=100){
+clearInterval(int);
+loading.style.display="none";
+}
+},40);
+
 </script>
-
 </body>
   </html>

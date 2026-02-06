@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🚀 BaoVN ULTRA BP HUB</title>
+
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  font-family:Arial;
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* STAR BG */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url("https://i.imgur.com/YKY28eT.png");
+  animation:starsMove 200s linear infinite;
+  z-index:-3;
+}
+@keyframes starsMove{
+  from{background-position:0 0;}
+  to{background-position:-10000px 5000px;}
+}
+
+/* METEOR */
+.meteor{
+  position:fixed;
+  top:-50px;
+  left:80%;
+  width:3px;
+  height:120px;
+  background:linear-gradient(white,transparent);
+  animation:meteorFall 3s linear infinite;
+  z-index:-2;
+}
+@keyframes meteorFall{
+  from{transform:translate(0,0);}
+  to{transform:translate(-600px,900px);}
+}
+
+/* SATELLITE */
+.satellite{
+  position:fixed;
+  top:120px;
+  width:80px;
+  animation:satMove 40s linear infinite;
+  z-index:-1;
+}
+@keyframes satMove{
+  from{left:-120px;}
+  to{left:110%;}
+}
+
+header{
+  text-align:center;
+  font-size:30px;
+  padding:20px;
+  font-weight:bold;
+}
+
+.searchBox{
+  text-align:center;
+}
+.searchBox input{
+  padding:10px;
+  width:70%;
+  border-radius:20px;
+  border:none;
+}
+
+/* CONTAINER */
+.container{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.card{
+  background:#0f172a;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 0 25px #00f7ff44;
+  transition:.3s;
+}
+.card:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 40px #00f7ff;
+}
+
+.preview{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+.openBtn{
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#00f7ff,#00ffa6);
+  font-weight:bold;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:#000c;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+.box{
+  background:#020617;
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+}
+
+.btnBox{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.premiumBtn{
+  padding:10px 26px;
+  border-radius:30px;
+  border:2px solid;
+  background:transparent;
+  font-weight:bold;
+}
+
+.yesBtn{color:#00ffe0;border-color:#00ffe0;}
+.noBtn{color:#ff4d6d;border-color:#ff4d6d;}
+
+.loading{display:none;margin-top:10px;}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="meteor"></div>
+<img class="satellite"
+src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Satellite_icon.svg">
+
+<header>🚀 BaoVN ULTRA BP HUB</header>
+
+<div class="searchBox">
+<input placeholder="Search BP..." onkeyup="searchBP(this.value)">
+</div>
+
+<div class="container" id="bpList">
+
+<!-- BP LIST -->
+
+<div class="card">
+<h3>Rocket Components</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/8zyuZFMaEe6eJ7uAd13aUA')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Soyuz Blueprint</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/CP1ahleaEe6eNLuAd13aUA')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Rocket Components 2 (No DLC)</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/zM-6lXc0Ee6edbuAd13aUA')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Space Shuttle + Space Cruiser</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/tcCdu11SEe6eRLuAd13aUA')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Extra Blueprint</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/mAMsVK14Ee6LZkVkBXBP0w')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Big Delta Rocket</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/TAz2FbE3Ee6LZkVkBXBP0w')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>1000x Efficient Rocket</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/VB0jkrHhEe6LZkVkBXBP0w')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Impossible Challenge</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/tZC7ONyjEe6LqEVkBXBP0w')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Falcon Heavy With Starlink</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/j1XwNRnrEe-3PuNyTkiz9w')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Large Rocket — 18 Satellites</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/SgHYe0FDEe-ZEjmvLffn8g')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Saturn V</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/s9CLL0LFEe-ZFDmvLffn8g')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Rocketdyne F-1 Engine</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/-oYjaU0CEe-ZJjmvLffn8g')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>Large Rocket — 72 Satellites</h3>
+<button class="openBtn"
+onclick="openBP('https://sharing.spaceflightsimulator.app/rocket/Evt1fFNDEe-ZLzmvLffn8g')">
+Open BP</button>
+</div>
+
+<div class="card">
+<h3>📂 All BP Drive Folder</h3>
+<button class="openBtn"
+onclick="openBP('https://drive.google.com/drive/folders/1-Dfuvuehw5mk_zWQIvcKKCaHz_sgY2d2')">
+Open Folder</button>
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="box">
+<h3>Are you sure you want to open BP?</h3>
+
+<div class="btnBox">
+<button class="premiumBtn noBtn"
+onclick="closePop()">No</button>
+
+<button class="premiumBtn yesBtn"
+onclick="startOpen()">Yes</button>
+</div>
+
+<div class="loading" id="loading">
+🚀 Opening... <span id="percent">0%</span>
+</div>
+
+</div>
+</div>
+
+<audio id="sound"
+src="https://www.soundjay.com/mechanical/rocket-launch-01.mp3"></audio>
+
+<script>
+let link="";
+
+function openBP(l){
+  link=l;
+  popup.style.display="flex";
+}
+
+function closePop(){
+  popup.style.display="none";
+}
+
+function startOpen(){
+  sound.play();
+  loading.style.display="block";
+
+  let p=0;
+  let int=setInterval(()=>{
+    p++;
+    percent.innerText=p+"%";
+    if(p>=100){
+      clearInterval(int);
+      setTimeout(()=>{location.href=link;},800);
+    }
+  },60);
+}
+
+function searchBP(v){
+  document.querySelectorAll(".card")
+  .forEach(c=>{
+    c.style.display=
+    c.innerText.toLowerCase().includes(v.toLowerCase())
+    ?"block":"none";
+  });
+}
+</script>
+
+</body>
+</html>

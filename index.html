@@ -3,72 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BaoVN Free SFS Blueprints — ULTRA GOD</title>
+<title>BaoVN Free SFS Blueprints</title>
 
 <style>
 
 /* ===== SCROLL FIX ===== */
 html,body{
   margin:0;
-  padding:0;
   overflow-x:hidden;
   overflow-y:auto;
   touch-action:pan-y;
-  scroll-behavior:smooth;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial;
   background:#020617;
   color:white;
 }
 
-/* ===== SAO NỀN ===== */
+/* ===== SPACE BG ===== */
 .stars{
   position:fixed;
   width:100%;
   height:100%;
   background:url("https://i.imgur.com/YKY28eT.png");
   animation:starScroll 200s linear infinite;
-  z-index:-3;
+  z-index:-1;
 }
 @keyframes starScroll{
   from{background-position:0 0;}
   to{background-position:-10000px 5000px;}
 }
 
-/* ===== SAO BĂNG ===== */
-.meteor{
-  position:fixed;
-  width:3px;
-  height:120px;
-  background:linear-gradient(white,transparent);
-  top:-100px;
-  left:50%;
-  animation:meteorFall 6s linear infinite;
-  z-index:-2;
-}
-@keyframes meteorFall{
-  to{transform:translate(-600px,900px);opacity:0;}
-}
-
-/* ===== VỆ TINH ===== */
-.satellite{
-  position:fixed;
-  top:20%;
-  left:-200px;
-  font-size:28px;
-  animation:satFly 40s linear infinite;
-}
-@keyframes satFly{
-  to{left:120%;}
-}
-
 /* ===== HEADER ===== */
 header{
   text-align:center;
   padding:20px;
-  font-size:28px;
+  font-size:26px;
   font-weight:bold;
   background:linear-gradient(90deg,#06b6d4,#3b82f6);
-  box-shadow:0 0 25px #000;
 }
 
 /* ===== SEARCH ===== */
@@ -81,17 +51,16 @@ header{
   width:260px;
   border-radius:12px;
   border:none;
-  outline:none;
 }
 
 /* ===== CONTAINER ===== */
 .container{
+  max-width:900px;
+  margin:auto;
   display:flex;
   flex-direction:column;
   gap:20px;
   padding:20px;
-  max-width:900px;
-  margin:auto;
 }
 
 /* ===== CARD ===== */
@@ -99,31 +68,39 @@ header{
   background:#1e293b;
   border-radius:20px;
   padding:20px;
-  box-shadow:0 0 20px rgba(0,0,0,0.6);
+  box-shadow:0 0 20px #000;
   transition:.3s;
 }
 .card:hover{
   transform:scale(1.03);
-  box-shadow:0 0 30px #38bdf8;
 }
 
+/* ===== PREVIEW ===== */
 .preview{
   width:100%;
+  height:180px;
+  object-fit:cover;
   border-radius:14px;
-  margin-bottom:10px;
+  margin-bottom:12px;
+  box-shadow:0 0 12px #38bdf8;
+  transition:.4s;
+}
+.card:hover .preview{
+  transform:scale(1.05);
+  box-shadow:0 0 25px #22c55e;
 }
 
 /* ===== BUTTON ===== */
-.btn{
+.openBtn{
   padding:12px 22px;
   background:linear-gradient(90deg,#22c55e,#4ade80);
-  border-radius:14px;
   border:none;
+  border-radius:14px;
   font-weight:bold;
   cursor:pointer;
 }
 
-/* ===== CONFIRM ===== */
+/* ===== CONFIRM BOX ===== */
 #confirmBox{
   position:fixed;
   top:50%;
@@ -131,11 +108,46 @@ header{
   transform:translate(-50%,-50%);
   background:#0f172a;
   padding:30px;
-  border-radius:20px;
+  border-radius:22px;
   box-shadow:0 0 40px #38bdf8;
   display:none;
   text-align:center;
   z-index:999;
+}
+
+/* ===== LUXURY BUTTONS ===== */
+.confirmBtns{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:20px;
+}
+
+.confirmBtn{
+  padding:14px 34px;
+  border:none;
+  border-radius:18px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.yes{
+  color:#22c55e;
+  background:rgba(34,197,94,0.1);
+  box-shadow:0 0 12px #22c55e,inset 0 0 12px #22c55e;
+}
+.yes:hover{
+  transform:scale(1.1);
+}
+
+.no{
+  color:#ef4444;
+  background:rgba(239,68,68,0.1);
+  box-shadow:0 0 12px #ef4444,inset 0 0 12px #ef4444;
+}
+.no:hover{
+  transform:scale(1.1);
 }
 
 /* ===== LOADING ===== */
@@ -151,33 +163,21 @@ header{
   z-index:1000;
 }
 
-.fire{
-  font-size:40px;
-  animation:fire .2s infinite alternate;
-}
-@keyframes fire{
-  to{transform:translateY(-8px);}
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="stars"></div>
-<div class="satellite">🛰️</div>
 
-<!-- LOADING -->
 <div id="loading">
-<div class="fire">🚀🔥</div>
 <h2 id="loadText">Loading 0%</h2>
 </div>
 
-<header>🚀 BaoVN Free SFS Blueprints — ULTRA GOD</header>
+<header>🚀 BaoVN Free SFS Blueprints</header>
 
-<!-- SEARCH -->
 <div class="searchBox">
-<input type="text" placeholder="Search Blueprint..." onkeyup="searchBP(this.value)">
+<input placeholder="Search BP..." onkeyup="searchBP(this.value)">
 </div>
 
 <div class="container" id="bpList"></div>
@@ -185,76 +185,96 @@ header{
 <!-- CONFIRM -->
 <div id="confirmBox">
 <h3>Are you sure you want to open the blueprints?</h3>
-<button onclick="closeConfirm()">No</button>
-<button onclick="confirmOpen()">Yes</button>
+<div class="confirmBtns">
+<button class="confirmBtn no" onclick="closeConfirm()">No</button>
+<button class="confirmBtn yes" onclick="confirmOpen()">Yes</button>
+</div>
 </div>
 
-<!-- AUDIO -->
-<audio id="openSound" src="https://www.soundjay.com/mechanical/sounds/rocket-launch-01.mp3"></audio>
-<audio autoplay loop src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bce.mp3"></audio>
+<audio id="openSound"
+src="https://www.soundjay.com/mechanical/sounds/rocket-launch-01.mp3"></audio>
 
 <script>
 
-/* ===== BP DATA ===== */
+/* ===== PREVIEW IMAGE ===== */
+const previewImg =
+"https://images.pexels.com/photos/65704/pexels-photo-65704.jpeg";
+
+/* ===== FULL BP LIST ===== */
 const blueprints=[
 
-{title:"Rocket Components",cat:"Pack",
-img:"https://i.imgur.com/7QZ6Q9B.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/8zyuZFMaEe6eJ7uAd13aUA"},
+["Rocket Components",
+"https://sharing.spaceflightsimulator.app/rocket/8zyuZFMaEe6eJ7uAd13aUA"],
 
-{title:"Soyuz",cat:"Rocket",
-img:"https://i.imgur.com/6X4Q7vG.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/CP1ahleaEe6eNLuAd13aUA"},
+["Soyuz",
+"https://sharing.spaceflightsimulator.app/rocket/CP1ahleaEe6eNLuAd13aUA"],
 
-{title:"Shuttle + Cruiser",cat:"Station",
-img:"https://i.imgur.com/4R1Z7wL.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/tcCdu11SEe6eRLuAd13aUA"},
+["Rocket Components No DLC",
+"https://sharing.spaceflightsimulator.app/rocket/zM-6lXc0Ee6edbuAd13aUA"],
 
-{title:"Saturn V",cat:"Rocket",
-img:"https://i.imgur.com/2yaf2wb.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/s9CLL0LFEe-ZFDmvLffn8g"},
+["Shuttle + Cruiser",
+"https://sharing.spaceflightsimulator.app/rocket/tcCdu11SEe6eRLuAd13aUA"],
 
-{title:"Falcon Heavy Starlink",cat:"Satellite",
-img:"https://i.imgur.com/9XqQ9QF.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/j1XwNRnrEe-3PuNyTkiz9w"},
+["Extra BP",
+"https://sharing.spaceflightsimulator.app/rocket/mAMsVK14Ee6LZkVkBXBP0w"],
 
-{title:"18 Satellites Rocket",cat:"Satellite",
-img:"https://i.imgur.com/3k9Q9QF.png",
-link:"https://sharing.spaceflightsimulator.app/rocket/SgHYe0FDEe-ZEjmvLffn8g"},
+["Big Delta 100 Boosters",
+"https://sharing.spaceflightsimulator.app/rocket/TAz2FbE3Ee6LZkVkBXBP0w"],
 
-{title:"Drive Folder",cat:"Pack",
-img:"https://i.imgur.com/zYIlgBl.png",
-link:"https://drive.google.com/drive/folders/1-Dfuvuehw5mk_zWQIvcKKCaHz_sgY2d2"}
+["1000x Efficient Rocket",
+"https://sharing.spaceflightsimulator.app/rocket/VB0jkrHhEe6LZkVkBXBP0w"],
+
+["Impossible Challenge",
+"https://sharing.spaceflightsimulator.app/rocket/tZC7ONyjEe6LqEVkBXBP0w"],
+
+["Falcon Heavy Starlink",
+"https://sharing.spaceflightsimulator.app/rocket/j1XwNRnrEe-3PuNyTkiz9w"],
+
+["18 Satellites Rocket",
+"https://sharing.spaceflightsimulator.app/rocket/SgHYe0FDEe-ZEjmvLffn8g"],
+
+["Saturn V",
+"https://sharing.spaceflightsimulator.app/rocket/s9CLL0LFEe-ZFDmvLffn8g"],
+
+["F-1 Engine",
+"https://sharing.spaceflightsimulator.app/rocket/-oYjaU0CEe-ZJjmvLffn8g"],
+
+["72 Satellites Rocket",
+"https://sharing.spaceflightsimulator.app/rocket/Evt1fFNDEe-ZLzmvLffn8g"],
+
+["Astronaut BP",
+"https://sharing.spaceflightsimulator.app/rocket/sQtDwO7gEfCMRdsmxpcUUg"],
+
+["Drive Folder",
+"https://drive.google.com/drive/folders/1-Dfuvuehw5mk_zWQIvcKKCaHz_sgY2d2"]
 
 ];
 
 /* ===== RENDER ===== */
 function render(list){
-const box=document.getElementById("bpList");
-box.innerHTML="";
-
+bpList.innerHTML="";
 list.forEach(bp=>{
-box.innerHTML+=`
+bpList.innerHTML+=`
 <div class="card">
-<img class="preview" src="${bp.img}">
-<h3>${bp.title}</h3>
-<p>Category: ${bp.cat}</p>
-<button class="btn" onclick="openBP('${bp.link}')">Open BP</button>
+<img class="preview" src="${previewImg}">
+<h3>${bp[0]}</h3>
+<button class="openBtn"
+onclick="openConfirm('${bp[1]}')">Open BP</button>
 </div>`;
 });
 }
 render(blueprints);
 
 /* ===== SEARCH ===== */
-function searchBP(txt){
-txt=txt.toLowerCase();
-render(blueprints.filter(bp=>bp.title.toLowerCase().includes(txt)));
+function searchBP(t){
+t=t.toLowerCase();
+render(blueprints.filter(b=>b[0].toLowerCase().includes(t)));
 }
 
 /* ===== CONFIRM ===== */
 let target="";
 
-function openBP(link){
+function openConfirm(link){
 target=link;
 confirmBox.style.display="block";
 }
@@ -288,5 +308,6 @@ loading.style.display="none";
 },40);
 
 </script>
+
 </body>
   </html>
